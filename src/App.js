@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+
+import MyCards from './components/cards/MyCards';
+import AddCard from './components/cards/AddCard';
+import EditCard from './components/cards/EditCard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <main className='py-3'>
+        <Container>
+          <Route path={`/cards`} component={MyCards} exact />
+          <Route path={`/cards/add`} component={AddCard} />
+          <Route path={`/cards/:id/edit`} component={EditCard} />
+        </Container>
+      </main>
+    </Router>
   );
 }
 
